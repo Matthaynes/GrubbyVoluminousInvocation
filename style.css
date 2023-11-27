@@ -2,3 +2,11 @@ html {
   height: 100%;
   width: 100%;
 }
+
+.row {
+  text-align: center;
+  padding-top: 1em;
+}
+.hector{
+  padding-top: 2em;
+}
