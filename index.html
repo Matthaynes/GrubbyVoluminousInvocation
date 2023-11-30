@@ -6,9 +6,10 @@
   <meta name="viewport" content="width=device-width">
   <title>replit</title>
   <link href="style.css" rel="stylesheet" type="text/css" />
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 </head>
-    
+
 
 <body>
   <div class="container">
@@ -17,33 +18,88 @@
         <h1></h1>
       </div>
       <div class="col-4">
-      <h1>This Or That</h1>
-    </div>
+        <h1>This Or That</h1>
+      </div>
       <div class="col-4">
         <h1></h1>
       </div>
-  </div>
+    </div>
     <div class="row hector">
       <div class="col-4">
-       <img src="licensed-image.jpg" style="border: 1px solid black;"><!--- This will animate in and out and will change!--> 
-  </div>
-      <div class="col-4">
-            <h1>OR</h1>
+        <img id="food-image1" src="img/food1.jpeg" class="food-image" alt="Food Image 1" onclick="chooseFood(1)"
+          style="border: 1px solid black;">
+        <!--- This will animate in and out and will change!-->
       </div>
       <div class="col-4">
-           <img src="burger.jpg" style="border: 1px solid black;"><!--- This will animate in and out and will change!--> 
+        <h1>OR</h1>
+      </div>
+      <div class="col-4">
+        <img id="food-image2" src="img/food2.jpeg" class="food-image" alt="Food Image 2" onclick="chooseFood(2)"
+          style="border: 1px solid black;">
+        <!--- This will animate in and out and will change!-->
       </div>
     </div>
   </div>
- 
+  <script>
+    const images = [
+      "img/food1.jpeg",
+      "img/food2.jpeg",
+      "img/food3.jpg",
+      "img/food4.jpg",
+      "img/food5.jpg",
+      "img/food6.jpg",
+      "img/food7.webp",
+      "img/food8.jpg",
+      "img/food9.jpg",
+      "img/food10.jpg",
+      "img/food11.webp",
+      "img/food12.jpg",
+      "img/food13.jpg",
+      "img/food14.jpg"
+      // Add more images as needed
+    ];
 
+      let lastSelectedImages = {
+          1: 0,
+          2: 1,
+      };
+
+      function chooseFood(choice) {
+          const foodImage1 = document.getElementById("food-image1");
+          const foodImage2 = document.getElementById("food-image2");
+
+          let newIndex;
+
+          do {
+              newIndex = Math.floor(Math.random() * images.length);
+          } while (newIndex === lastSelectedImages[1] || newIndex === lastSelectedImages[2]);
+
+          lastSelectedImages[choice] = newIndex;
+
+          if (choice === 1) {
+              foodImage2.style.opacity = 0;
+              setTimeout(() => {
+                  foodImage2.src = images[newIndex];
+                  foodImage2.style.opacity = 1;
+              }, 500); // Adjust the delay to match the transition duration
+          } else if (choice === 2) {
+              foodImage1.style.opacity = 0;
+              setTimeout(() => {
+                  foodImage1.src = images[newIndex];
+                  foodImage1.style.opacity = 1;
+              }, 500); // Adjust the delay to match the transition duration
+          }
+      }
+  </script>
   <!--
   This script places a badge on your repl's full-browser view back to your repl's cover
   page. Try various colors for the theme: dark, light, red, orange, yellow, lime, green,
   teal, blue, blurple, magenta, pink!
   -->
-     <script src="script.js"></script>
-     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+  <script src="script.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+    crossorigin="anonymous"></script>
 </body>
 
 </html>
